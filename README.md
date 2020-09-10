@@ -102,6 +102,20 @@ It may be fun and useful to run an *interactive* session in the container, where
 
 docker run --name python_explorations -it python:3.9.0rc1-buster bash
 
+We can also somewhat hack access to a graphical-user-interface apps,
+for example 
+lets run:
+xhost +local:root
+
+docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY ubuntu
+(and xhost -local:root afterwards)
+
+inside lets install geany
+apt-get update && apt-get install geany
+and start geany
+If you are interested in this kind of stuff (for example to share your GUI app to everyone) I recommend using
+X11docker which does all the setup for you
+
 
 
 ### Managing docker containers
@@ -116,4 +130,13 @@ docker container start <container_name>
 
 it will start the container with previously used flags, but 
 
+### Making and building images
 
+docker build . 
+
+docker build . --tag
+
+
+docker comit mycontainer myimagename
+
+###

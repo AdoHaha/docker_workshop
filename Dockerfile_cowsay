@@ -1,0 +1,10 @@
+FROM ubuntu:20.04
+LABEL maintainer igorzubrycki@gmail.com
+RUN apt-get update && apt-get install -y cowsay --no-install-recommends && rm -rf /var/lib/apt/lists/*
+ENV PATH $PATH:/usr/games
+ENV COW_WORDS "I am cow"
+COPY ./example_files/what_does_the_cow_say.txt /cow_folder/
+CMD ["cowsay", "hello"]
+
+
+

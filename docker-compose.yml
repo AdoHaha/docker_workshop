@@ -1,0 +1,29 @@
+version: "3"
+services:
+  research:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: mainscience
+    command: "jupyter notebook"
+    expose:
+      - "8888"
+    ports:
+      - 8889:8888
+    volumes:
+      - "$PWD/my_research:/my_research"
+    networks:
+      - my-network
+    restart: unless-stopped
+  cowsay:
+    build:
+      context: ./
+      dockerfile: Dockerfile_cowsay  
+    image: mycow
+    restart: unless-stopped
+    networks:
+      - my-network
+
+networks:
+ my-network:
+   driver: bridge
