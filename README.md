@@ -139,4 +139,10 @@ docker build . --tag
 
 docker comit mycontainer myimagename
 
-###
+### Pushing to docker hub
+
+docker login --username=yourhubusername --email=youremail@company.com
+docker images
+docker tag image_id yourhubusername/verse_gapminder:firsttry
+docker push yourhubusername/verse_gapminder
+
